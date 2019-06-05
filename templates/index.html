@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+
+
+<head>
+    <title>Kino - Earn Kin for the spending you do everyday</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Font -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css') }}">
+    <!-- Main css -->
+    <link href="{{ url_for('static',filename='css/style.css') }}" rel="stylesheet">
+
+
+</head>
+
+<body>
+    <header>
+        <div class="container mt-5">
+            <div><img src="{{ url_for('static',filename='images/logo.png') }}" width="160" height="90" style="margin-bottom:24px;" ></div>
+            <h1>Earn Kin for shopping at your favorite brands.</h1>
+            <p class="tagline">Swipe, tap, scan — if you have a debit or credit card, you’re set to earn Kin with every
+                        purchase. It’s that easy.</p>
+            <form action="/email_submitted" method="post">
+                <input type="email" name="email" placeholder="Enter email address" class="mytext" required>
+                <input type="submit" value="Get Early Access" class="button">
+            </form>
+            <!-- <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Start Now for Free!</a> -->
+        <div ><img src="{{ url_for('static',filename='images/new_phone.png') }}" style="margin-top: 3rem; margin-bottom:5rem" width="700px"></div>
+        </div>
+    </header>
+
+
+
+</body>
+
+</html>
+
