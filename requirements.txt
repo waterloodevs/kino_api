@@ -6,8 +6,6 @@ kin_sdk==2.3.1
 Flask==1.0.2
 requests==2.20.0
 kin_base==1.0.7
-flask_ngrok==0.0.25
 Flask_HTTPAuth==3.2.4
 kin==1.7.1
-quart==0.9.1
 gunicorn==19.9.0

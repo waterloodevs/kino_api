@@ -1,14 +1,7 @@
-import quart.flask_patch
-import requests
-import json
-import psycopg2
-import psycopg2.extras
 import asyncio
 import kin
-from kin_base.transaction_envelope import TransactionEnvelope
 import smtplib
 from email.message import EmailMessage
-from datetime import datetime, timedelta
 from flask import Flask, render_template, request, redirect, url_for, abort, g, Response
 from flask import jsonify
 from flask_sqlalchemy import SQLAlchemy
@@ -16,8 +9,7 @@ from sqlalchemy.dialects.postgresql import JSON
 import firebase_admin
 from firebase_admin import credentials, auth, messaging
 from flask_httpauth import HTTPTokenAuth
-from flask_ngrok import run_with_ngrok
-
+import gunicorn
 
 http_auth = HTTPTokenAuth(scheme='Token')
 
