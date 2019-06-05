@@ -83,7 +83,18 @@ def verify_token(fb_id_token):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return "hello"
+
+
+@app.route('/a')
+def index():
+    return jsonify({"Message": "hello"}), 200
+
+
+@app.route('/b')
+@http_auth.verify_token
+def index():
+    return jsonify({"Message": "hello"}), 200
 
 
 @app.route('/register', methods=['POST'])
