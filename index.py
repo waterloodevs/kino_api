@@ -73,14 +73,10 @@ def verify_token(fb_id_token):
     return True
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
+@http_auth.login_required
 def index():
     return "hello"
-
-
-@app.route('/a')
-def indexa():
-    return jsonify({"Message": "hello"}), 200
 
 
 @app.route('/register', methods=['POST'])
