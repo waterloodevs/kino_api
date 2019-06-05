@@ -92,7 +92,7 @@ def verify_token(fb_id_token):
 
 @app.route('/', methods=['GET'])
 def index():
-    return jsonify({"Message": "Welcome to the Kino Api"}), 200
+    return "hello"
 
 
 @app.route('/register', methods=['POST'])
