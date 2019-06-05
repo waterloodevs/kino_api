@@ -30,7 +30,6 @@ app = Flask(__name__)
 # run_with_ngrok(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://aueqysferuszbo:8eb6155fc340e1de1b38ce4eac1aa190f15bbc527ee52ce389612b1bde6d14b6@ec2-107-22-238-217.compute-1.amazonaws.com:5432/ddrnuulbba6300'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-SSL_mode = 'allow'
 db = SQLAlchemy(app)
 
 AFFILIATE_LINKS = {
@@ -90,7 +89,7 @@ def verify_token(fb_id_token):
     return True
 
 
-@app.route('/', methods=['GET'])
+@app.route('/')
 def index():
     return "hello"
 
@@ -299,6 +298,6 @@ def buy_giftcard():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
 
 
