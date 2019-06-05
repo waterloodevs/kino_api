@@ -91,10 +91,10 @@ def indexa():
     return jsonify({"Message": "hello"}), 200
 
 
-@app.route('/b')
+@app.route('/b', methods=["GET"])
 @http_auth.verify_token
 def indexb():
-    return jsonify({"Message": "hello"}), 200
+    return jsonify({"Message": "oh"}), 200
 
 
 @app.route('/register', methods=['POST'])
