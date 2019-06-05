@@ -87,13 +87,13 @@ def index():
 
 
 @app.route('/a')
-def index():
+def indexa():
     return jsonify({"Message": "hello"}), 200
 
 
 @app.route('/b')
 @http_auth.verify_token
-def index():
+def indexb():
     return jsonify({"Message": "hello"}), 200
 
 
