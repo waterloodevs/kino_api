@@ -24,15 +24,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://aueqysferuszbo:8eb6155fc340e
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-AFFILIATE_LINKS = {
-    "www.berrylook.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=44303&murl=https%3A%2F%2Fwww.berrylook.com%2F",
-    "www.bloomstoday.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=44085&murl=http%3A%2F%2Fwww.bloomstoday.com",
-    "www.cheapoair.ca": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=37732&murl=https%3A%2F%2Fwww.cheapoair.ca%2F",
-    "www.josbank.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=38377&murl=http%3A%2F%2Fwww.josbank.com",
-    "www.shop.lego.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=13923&murl=http%3A%2F%2Fshop.lego.com",
-    "www.macys.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=3184&murl=http%3A%2F%2Fwww.macys.com",
-    "www.microsoft.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=24542&murl=http%3A%2F%2Fwww.microsoft.com"
-}
+
 
 EARN_PRICE_PER_DOLLAR = 100
 SPEND_PRICE_PER_DOLLAR = 10000
@@ -179,12 +171,30 @@ def onboard_account():
 @app.route('/stores', methods=['GET'])
 @http_auth.login_required
 def stores():
+    AFFILIATE_LINKS = {
+        "www.berrylook.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=44303&murl=https%3A%2F%2Fwww.berrylook.com%2F",
+        "www.bloomstoday.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=44085&murl=http%3A%2F%2Fwww.bloomstoday.com",
+        "www.cheapoair.ca": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=37732&murl=https%3A%2F%2Fwww.cheapoair.ca%2F",
+        "www.josbank.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=38377&murl=http%3A%2F%2Fwww.josbank.com",
+        "www.shop.lego.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=13923&murl=http%3A%2F%2Fshop.lego.com",
+        "www.macys.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=3184&murl=http%3A%2F%2Fwww.macys.com",
+        "www.microsoft.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=24542&murl=http%3A%2F%2Fwww.microsoft.com"
+    }
     return jsonify({"stores": list(AFFILIATE_LINKS.keys())}), 200
 
 
 @app.route('/affiliate_link/<url>', methods=['GET'])
 @http_auth.login_required
 def affiliate_link(url):
+    AFFILIATE_LINKS = {
+        "www.berrylook.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=44303&murl=https%3A%2F%2Fwww.berrylook.com%2F",
+        "www.bloomstoday.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=44085&murl=http%3A%2F%2Fwww.bloomstoday.com",
+        "www.cheapoair.ca": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=37732&murl=https%3A%2F%2Fwww.cheapoair.ca%2F",
+        "www.josbank.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=38377&murl=http%3A%2F%2Fwww.josbank.com",
+        "www.shop.lego.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=13923&murl=http%3A%2F%2Fshop.lego.com",
+        "www.macys.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=3184&murl=http%3A%2F%2Fwww.macys.com",
+        "www.microsoft.com": "https://click.linksynergy.com/deeplink?id=fw7GSdQ4wUE&mid=24542&murl=http%3A%2F%2Fwww.microsoft.com"
+    }
     user = User.query.filter_by(uid=g.uid).first()
     link = AFFILIATE_LINKS[url]
     # Every url needs to have http(s):// at the start
