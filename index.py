@@ -25,20 +25,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 
-
-EARN_PRICE_PER_DOLLAR = 100
-SPEND_PRICE_PER_DOLLAR = 10000
-
-GIFTCARD_TYPES = ['Amazon']
-GIFTCARD_AMOUNTS = [5, 10, 25]
-MAX_GIFTCARD_QUANTITY = 10
-MIN_GIFTCARD_QUANTITY = 1
-
-KINO_PUBLIC_ADDRESS = "GCFEL2AKYJFFNSPDA6CVCD3T3BHD6LZBQLGT5RYP4ZT6WAH42PZ5YNZN"
-KINO_PRIVATE_ADDRESS = "SCTDXS2NGAKNMSJFJVEE7IQQDUM7KAXTHNRVFTXRGMUYNFIO6LJ5U5M6"
-APP_ID = "1111"
-
-
 class User(db.Model):
 
     __tablename__ = "users"
@@ -114,6 +100,10 @@ def update_fcm_token():
 
 
 async def onboard_account_async(request):
+
+    KINO_PRIVATE_ADDRESS = "SCTDXS2NGAKNMSJFJVEE7IQQDUM7KAXTHNRVFTXRGMUYNFIO6LJ5U5M6"
+    APP_ID = "1111"
+
     if 'public_address' not in request.json:
         return jsonify(), 500
     public_address = request.json['public_address']
@@ -193,6 +183,7 @@ def affiliate_link(url):
 
 
 def calc_kin_payout_amount(dollar_amount):
+    EARN_PRICE_PER_DOLLAR = 100
     amount = dollar_amount * EARN_PRICE_PER_DOLLAR
     return min(amount, 50000)
 
@@ -225,6 +216,12 @@ def email_kino(user, account_creation="", earn_transaction="",
 
 
 def valid_order(order):
+
+    GIFTCARD_TYPES = ['Amazon']
+    GIFTCARD_AMOUNTS = [5, 10, 25]
+    MAX_GIFTCARD_QUANTITY = 10
+    MIN_GIFTCARD_QUANTITY = 1
+
     # Ensure all information is present
     if not all(x in order for x in ['email', 'type', 'amount', 'quantity', 'total']):
         return False
@@ -234,6 +231,7 @@ def valid_order(order):
     quanity = int(order['quantity'])
     total = float(order['total'])
 
+    SPEND_PRICE_PER_DOLLAR = 10000
     # Ensure total is correct
     if total != quanity*amount*SPEND_PRICE_PER_DOLLAR:
         return False
@@ -251,6 +249,9 @@ def valid_order(order):
 
 
 async def buy_giftcard_async(request):
+    KINO_PUBLIC_ADDRESS = "GCFEL2AKYJFFNSPDA6CVCD3T3BHD6LZBQLGT5RYP4ZT6WAH42PZ5YNZN"
+    KINO_PRIVATE_ADDRESS = "SCTDXS2NGAKNMSJFJVEE7IQQDUM7KAXTHNRVFTXRGMUYNFIO6LJ5U5M6"
+    APP_ID = "1111"
     user = None
     client = kin.KinClient(kin.TEST_ENVIRONMENT)
     try:
@@ -301,6 +302,6 @@ def buy_giftcard():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 
 
