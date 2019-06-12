@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../../Playing_around_With_KIN_SDK_python/.idea/Playing_around_With_KIN_SDK_python.iml" filepath="$PROJECT_DIR$/../../Playing_around_With_KIN_SDK_python/.idea/Playing_around_With_KIN_SDK_python.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/browser_extension_api.iml" filepath="$PROJECT_DIR$/.idea/browser_extension_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/kino_api.iml" filepath="$PROJECT_DIR$/.idea/kino_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../tiny_ted_api/.idea/tiny_ted_api.iml" filepath="$PROJECT_DIR$/../tiny_ted_api/.idea/tiny_ted_api.iml" />
     </modules>
   </component>
 </project>
